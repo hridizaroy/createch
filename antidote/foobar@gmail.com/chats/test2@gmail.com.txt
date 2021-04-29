@@ -1,0 +1,12 @@
+Msg: Hi, I'm a guide. I think I can help you.
+User: test2@gmail.com
+Time: 3:23
+Date: 29/9/2020
+Msg: Hey, thanks for reverting
+User: foobar@gmail.com
+Time: 3:25
+Date: 29/9/2020
+Msg: I cater too
+User: test2@gmail.com
+Time: 3:28
+Date: 29/9/2020

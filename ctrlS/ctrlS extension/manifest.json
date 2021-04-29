@@ -1,0 +1,33 @@
+{
+    "name": "ctrlS",
+    "version": "1.0",
+    "description": "Ease of research for ctrlS",
+    "author": "Hridiza Roy",
+    "manifest_version": 2,
+    "permissions": [
+        "storage",
+        "tabs",
+        "<all_urls>"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "http://localhost/Remote%20Collab%20app/newfile.php"
+            ],
+            "js": [
+                "storeSessionData.js"
+            ]
+        },
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "sync.js"
+            ],
+            "exclude_matches": [
+                "http://localhost/*"
+            ]
+        }
+    ]
+}

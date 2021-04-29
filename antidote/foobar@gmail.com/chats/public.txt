@@ -1,0 +1,20 @@
+Msg: Hi Everyone
+User: foobar@gmail.com
+Time: 3:26
+Date: 29/9/2020
+Msg: This is my public chat room
+User: foobar@gmail.com
+Time: 3:26
+Date: 29/9/2020
+Msg: Only civilians within a 100m radius of me have access to this chat room
+User: foobar@gmail.com
+Time: 3:26
+Date: 29/9/2020
+Msg: We can use this space to discuss common issues or meeting points for mass resources
+User: foobar@gmail.com
+Time: 3:27
+Date: 29/9/2020
+Msg: Okay
+User: test@gmail.com
+Time: 3:29
+Date: 29/9/2020
