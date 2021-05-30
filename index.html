@@ -1,0 +1,362 @@
+<html>
+    <head>
+        <title>.createch | Home</title>
+        <link rel = "stylesheet" href = "Site css.css">
+        <meta charset="utf-8">
+    </head>
+    <body>
+
+    <!--
+        *Add small contact options on the top left (Small circles glow)
+        *Let your imagination take the wheel.
+        *Nav bars for all other pages
+        *Brochure/Video
+
+        List of options -
+        *Nodes
+            **Session glimpses of each node
+            **Head, Node Associate, Associate Elements, Elements, samples (?)
+        *Team (Meet our Elements)
+            **Heads
+            **Node Associates
+            **Elements
+            **Associate elements
+        *About
+            **Short intro
+            **Motherboard
+            **Config
+            **Contact
+        *Protocols
+        *Past Events (Replaced with link for inter-school event when they happen)
+            *.createch 1.0
+              *the club conducted the first edition of its annual event on 19th November, 2019.
+        *Registration for intra (?)
+            **Have a field "What skills would you like to demonstrate in this project?"
+                ***Add ios app dev, animation etc. to the options
+                ***Add an "other: Please specify" column
+        *Registration for inter-school event
+        *Invite/School Invite
+        *Contact Us- FB Page, Email, Phone, Instagram? - compiler@createchrisvk.in
+        *Schedule
+    -->
+        <div class = "container">
+            <img src = "images/pcb-min.jpg" class = "bgimg">
+
+            <div class="options">
+                <div class="opt">
+                    <p id="prototxt"><a href="protocols.html" target="_blank">Protocols</a></p>
+                </div>
+
+                <div class="opt">
+                    <p id="abouttxt"><a href="About.html" target="_blank">About</a></p>
+                </div>
+
+                <div id="schedule" class="opt">
+                    <p id="scheduletxt"><a href="Schedule.html" target="_blank">Team</a></p>
+                </div>
+
+                <div id = "nodes" class = "opt">
+                    <p id = "nodestxt"><a href = "Events (All).html">Nodes</a></p>
+                </div>
+
+                <div class="opt">
+                    <p id="eventstxt"><a href="https://drive.google.com/file/d/1Mfte2bBP1mitfyJYQm014havazcCGZ9p/view?usp=sharing"
+                            target="_blank">Events</a></p>
+                </div>
+
+                <div id="invite" class = "opt">
+                    <p id="invitetxt"><a href = "https://drive.google.com/file/d/19t3EoB_yp0hwhK8XBOSFyP4PdCouDRJJ/view?usp=sharing" target = "_blank">Intra</a></p>
+                </div>
+            </div>
+
+            <!--Glows - clockwise-->
+            <img src="images/glow5.png" id="glow5" class="glow">
+            <img src="images/glow6.png" id="glow6" class="glow">
+            <img src="images/glow8.png" id="glow8" class="glow">
+            <img src="images/Next2.png" id="glow1" class="glow">
+            <img src="images/glow4.png" id="glow4" class="glow">
+            <img src="images/glow3.png" id="glow3" class="glow">
+
+            <!--Main Text-->
+            <div class="outer">
+               <div class="middle">
+                    <div class = "main">
+                        <div class = "title_text">
+                            <img src="images/logo.svg" class="logo">
+                            <p class="title" id = "test">reatech</p>
+                        </div>
+                        <p class="sub">Tinkering Club</p>
+                        <p class="sub2">RIS Vasant Kunj</p>
+                    </div>
+               </div>
+            </div>
+        </div>
+
+
+
+
+        <script>
+
+        var bgimg = document.querySelector(".bgimg");
+        var logo = document.querySelector(".logo");
+        var title = document.querySelector(".title");
+
+        var fixedR = 8832/4768; //Ratio of bg image
+        var r = innerWidth / innerHeight; //Ratio of device
+        //var r = screen.width/screen.height;
+
+        //Clockwise starting from 12 o clock
+        //Left values when background image width = 100%
+        const fullW = [43, 70, 84, 45, 9, 22];
+
+        //Top values when background image height = 100%
+        const fullH = [21, 50, 66.5, 72.5, 67.2, 41.5];
+
+        //Options
+        const opts = document.getElementsByClassName("opt");
+
+        //Glows
+        const glows = document.getElementsByClassName("glow");
+
+        //Glow values when width = 100% [width, left]
+        const glowFullW = [[4.5, 47.5], [23, 78], [8.5, 91.4], [14.5, 29.6], [8.5, 0], [21.5, 0]];
+
+        //Glow values when height = 100% [height, top]
+        const glowFullH = [[24.3, -0.8], [8, 49.7], [8, 65.5], [7.2, 75.5], [6.7, 65.8], [6.7, 44]];
+
+        //Positioning elements based on aspect ratio
+        function positioning1() {
+
+            r = innerWidth / innerHeight;
+
+            if (r >= fixedR) {
+                bgimg.style.width = "100%";
+                bgimg.style.height = "auto";
+                logo.style.width = "12%";
+                logo.style.height = "auto";
+            }
+            else {
+                bgimg.style.width = "auto";
+                bgimg.style.height = "100%"
+                logo.style.width = "15%";
+                logo.style.height = "auto";
+            }
+
+            if (innerWidth < 1080) {
+                logo.style.display = "none";
+                title.innerHTML = ".createch";
+            }
+            else {
+                logo.style.display = "initial";
+                title.innerHTML = "reatech";
+            }
+        }
+
+        function positioning2() {
+
+            r = innerWidth / innerHeight;
+
+            if (r >= fixedR) {
+                var extraH = bgimg.height - innerHeight; //Height outside each border
+
+                //Shifting image up for vertically centering
+                bgimg.style.marginTop = -1 * (extraH / 2) + "px";
+
+                //Iterating through opts and setting top value by calculating
+                //(%age of image height when height = 100%) - height outside each border
+
+                if (innerWidth >= 768) {
+                    for (var i = 0; i < opts.length; i++) {
+                        opts[i].style.top = (fullH[i] * 0.01 * bgimg.height) - (extraH / 2) + "px";
+                        opts[i].style.left = fullW[i] + "%"; //Setting left
+
+                        //If screen is not wide enough to accommodate leftmost & rightmost
+                        if (innerWidth < 992) {
+                            switch (i) {
+                                case 2:
+                                    opts[i].style.left = 70 + "%"; //Rightmost
+                                    break;
+                                case 4:
+                                    opts[i].style.left = 20 + "%"; //Leftmost
+                                    break;
+                            }
+                        }
+                    }
+                }
+
+                //Positioning glows
+                for (var i = 0; i < glowFullW.length; i++) {
+                    glows[i].style.width = glowFullW[i][0] + "%";
+                    glows[i].style.left = glowFullW[i][1] + "%";
+                    glows[i].style.top = (glowFullH[i][1] * 0.01 * bgimg.height) - (extraH / 2) + "px";
+                    glows[i].style.height = "auto";
+                }
+            }
+            else {
+                var extraW = bgimg.width - innerWidth;
+                bgimg.style.marginLeft = -1 * (extraW / 2) + "px";
+
+                if (innerWidth >= 768) {
+                    for (var i = 0; i < opts.length; i++) {
+                        opts[i].style.left = (fullW[i] * 0.01 * bgimg.width) - (extraW / 2) + "px";
+                        opts[i].style.top = fullH[i] + "%"; //Setting top
+
+                        //If screen is not wide enough to accommodate leftmost & rightmost
+                        if (innerWidth < 992) {
+                            switch (i) {
+                                case 2:
+                                    opts[i].style.left = 65 + "%"; //Rightmost
+                                    break;
+                                case 4:
+                                    opts[i].style.left = 20 + "%"; //Leftmost
+                                    break;
+                            }
+                        }
+                    }
+                }
+
+                //Positioning glows
+                for (var i = 0; i < glowFullH.length; i++) {
+                    glows[i].style.height = glowFullH[i][0] + "%";
+                    glows[i].style.top = glowFullH[i][1] + "%";
+                    //Somehow, value of 0 positions is a little too much to the left xD
+                    if (glowFullW[i][1] == 0) {
+                        glows[i].style.left = (1 * 0.01 * bgimg.width) - (extraW / 2) + "px";
+                    }
+                    else {
+                        glows[i].style.left = (glowFullW[i][1] * 0.01 * bgimg.width) - (extraW / 2) + "px";
+                    }
+                    glows[i].style.width = "auto";
+                }
+            }
+
+            //Small Screens
+            if (innerWidth < 768) {
+                for (var i = 0; i < opts.length; i++) {
+                    if (i == 0 || i == 3) {
+                        if (i == 0) {
+                            opts[i].style.top = 20 + "%";
+                            opts[i].style.left = 40 + "%"; //Setting left
+                        }
+                        else {
+                            opts[i].style.bottom = 20 + "%";
+                            opts[i].style.left = 43 + "%"; //Setting left
+                        }
+                    }
+                    else if (i == 1 || i == 2) {
+                        opts[i].style.left = 70 + "%";
+                    }
+                    else if (i == 4 || i == 5) {
+                        opts[i].style.left = 20 + "%";
+                    }
+
+                    if (i == 1 || i == 5) {
+                        opts[i].style.top = 10 + "%";
+                    }
+                    else if (i == 2 || i == 4) {
+                        opts[i].style.bottom = 10 + "%";
+                    }
+                }
+            }
+        }
+
+        
+        positioning1();
+
+        bgimg.onload = () => {
+            positioning2();
+        };
+
+        addEventListener("resize", positioning1);
+        addEventListener("resize", positioning2);
+
+        function glow1(){
+            document.getElementById("glow1").style.animation = "rightToLeft 1s 0s forwards";
+        }
+
+        function glow1off(){
+            document.getElementById("glow1").style.animation = "rightToLeftClose 0.2s 0s forwards";
+        }
+
+        function glow3() {
+            document.getElementById("glow3").style.animation = "rightToLeft 1s 0s forwards";
+        }
+
+        function glow3off() {
+            document.getElementById("glow3").style.animation = "rightToLeftClose 0.2s 0s forwards";
+        }
+        function glow4() {
+            document.getElementById("glow4").style.animation = "rightToLeft 1s 0s forwards";
+        }
+
+        function glow4off() {
+            document.getElementById("glow4").style.animation = "rightToLeftClose 0.2s 0s forwards";
+        }
+
+        function glow5() {
+            document.getElementById("glow5").style.animation = "bottomToTop 1.8s 0s forwards";
+        }
+
+        function glow5off() {
+            document.getElementById("glow5").style.animation = "bottomToTopClose 0.2s 0s forwards";
+        }
+
+        function glow6() {
+            document.getElementById("glow6").style.animation = "leftToRight 1s 0s forwards";
+        }
+
+        function glow6off() {
+            document.getElementById("glow6").style.animation = "leftToRightClose 0.2s 0s forwards";
+        }
+
+        function glow8() {
+            document.getElementById("glow8").style.animation = "leftToRight 0.7s 0s forwards";
+        }
+
+        function glow8off() {
+            document.getElementById("glow8").style.animation = "leftToRightClose 0.2s 0s forwards";
+        }
+
+        
+        if (innerWidth >=  992) {
+            document.getElementById("nodes").addEventListener("mouseenter", glow1);
+            document.getElementById("nodes").addEventListener("mouseleave", glow1off);
+
+            document.getElementById("invitetxt").addEventListener("mouseenter", glow3);
+            document.getElementById("invitetxt").addEventListener("mouseleave", glow3off);
+
+            document.getElementById("eventstxt").addEventListener("mouseenter", glow4);
+            document.getElementById("eventstxt").addEventListener("mouseleave", glow4off);
+
+            document.getElementById("abouttxt").addEventListener("mouseenter", glow6);
+            document.getElementById("abouttxt").addEventListener("mouseleave", glow6off);
+
+            document.getElementById("prototxt").addEventListener("mouseenter", glow5);
+            document.getElementById("prototxt").addEventListener("mouseleave", glow5off);
+
+            document.getElementById("scheduletxt").addEventListener("mouseenter", glow8);
+            document.getElementById("scheduletxt").addEventListener("mouseleave", glow8off);
+        }
+
+        //checking bgimg
+
+        function testImage(url) {
+            var tester = new Image();
+            tester.addEventListener('load', imageFound);
+            tester.addEventListener('error', imageNotFound);
+            tester.src = url;
+        }
+
+        function imageFound(){
+            document.querySelector('.title').style.color = "#000";
+        }
+
+        function imageNotFound(){
+            document.querySelector('.title').style.color = "#fff";
+        }
+
+        testImage("images/pcb-min.jpg");
+
+        </script>
+    </body>
+</html>
